@@ -1,9 +1,41 @@
 function populateTodoList(todos) {
-  //let new
+    
   
-  
-  let list = document.getElementById("todo-list");
+  let list = document.getElementById("todo-list");     // this <ul> element already exist, and now we going to fill it. Now it's empty because we removed all its content from html;
   // Write your code to create todo list elements with completed and delete buttons here, all todos should display inside the "todo-list" element.
+
+  // now we need to add <li> elements to this <ul>. 
+
+  let toDoItem = document.createElement("li");    //<li></li>; it's empty;
+  toDoItem.innerText = "hello world";             // this is our text between <li>; 
+  toDoItem.className = "list-group-item d-flex justify-content-between align-items-center";   //Where could I find this class? (I found it in other people repo)
+  
+  // now we need to add icons to this <li> element. 
+  // to do this we need to add <span>
+
+  let span = document.createElement("span");
+  span.className = "badge bg-primary rounded-pill";       // where do we define this class? 
+  let iconDelete = document.createElement("i"); 
+  iconDelete.className = "fa fa-trash";                   // where do we define this class? 
+
+  let iconCheck = document.createElement("i"); 
+  iconCheck.className = "fa fa-check";                    // where do we define this class? 
+
+  span.appendChild(iconDelete);    
+  span.appendChild(iconCheck);
+  toDoItem.appendChild(span); 
+  list.appendChild(toDoItem); 
+
+  // now we need to add eventListener to this icons
+
+  iconDelete.addEventListener("click", ()=>{
+    list.removeChild(toDoItem);                         //it's opposite list.appendChild(line 27)
+  }) 
+
+  iconCheck.addEventListener("click", () => {
+    toDoItem.style.textDecoration = "line-through";
+  })
+
 
 }
 

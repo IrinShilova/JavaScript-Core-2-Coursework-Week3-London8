@@ -9,8 +9,14 @@ function highlightWords(paragraph, colours) {
   let newSelect = document.createElement("select");
   let newOptions = "";
   for (let color of colours) {
-    newOptions = newOptions + `<option>${color}</option>`;
+    newOptions = newOptions + `<option>${color}</option>`;      //it's a string 
   }
+
+  //create <option>
+  
+
+
+
   newSelect.innerHTML = newOptions;
   parentElement.appendChild(newSelect);
   
@@ -25,7 +31,7 @@ function highlightWords(paragraph, colours) {
   
   for (let wordInSpan of spans) {
     wordInSpan.addEventListener("click", () => {
-      let colorName = newSelect.value; 
+      let colorName = newSelect.value;                  
       if (colorName !== "none") {
         wordInSpan.style.backgroundColor = colorName;
       }

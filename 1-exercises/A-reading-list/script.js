@@ -1,22 +1,33 @@
 function readingList(books) {
   // Write your code here...
-  let parentElement = document.querySelector("#content");
-  let newList = document.createElement("ul");
-  let bookText = "";
-  let className = ""; 
+  let parentElement = document.querySelector("#content");   //we find an element which already exists and where we are going to change something;
+  let newList = document.createElement("ul"); 
+    
+  // let someLi = 
+  //createElement for each book
+  //books.map 
+  
+  
+  
+  //we create an empty element, but it's empty, it exists only in memory, we need to create a text and put it here
+  let bookText = "";                // we form some text (as html code). And then we will put it to <ul>.
+  let className = "";               // we use this var, because we need to switch the style of the book, depending on if it's read or not
   for (let book of books) {
       if (book.alreadyRead) {
-        className = "book-item-not-read";
+        className = "book-item-not-read";  //this style already exist in css 
       } else {
-        className = "book-item-read";
+        className = "book-item-read";       // this style also already exist in css
       }
       bookText = bookText.concat(`<li class =${className}> <p>${book.title} by ${book.author}</p> <a href=${book.bookCoverImage}><img src=${book.bookCoverImage}></img>
       </a> </li>`); 
     }
  
+    /* after we exit the loop bookText is a string variable which contain html code. 
+      to make this string a code, we need to put this string in innerHtml of element newList (newList = document.createElement("ul"));
+    */
 
-   newList.innerHTML = bookText; //"<li>Hello World 1</li>" + "<li>Hello World 2</li>" + "<li>Hello World 3</li>";
-   parentElement.appendChild(newList);
+   newList.innerHTML = bookText; //"<li>book 1</li>" + "<li>book 2</li>" + "<li>book 3</li>";  //now it is a code, not a string;
+   parentElement.appendChild(newList); // We need to place newList (with <ul>) in the definite element in document;
 }
 
 const books = [
